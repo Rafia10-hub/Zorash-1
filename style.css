@@ -31,6 +31,26 @@ footer{background:#111827;color:#9ca3af;text-align:center;padding:30px;}
   align-items:center;
   z-index:200;
 }
+/* ================= PRODUCT MODAL RESPONSIVE ================= */
+@media screen and (max-width: 768px) {
+  .modal-content.product-detail {
+    width: 90%;          /* modal width mobile me thodi choti ho */
+    max-height: 80vh;    /* screen ka 80% height le, scroll possible ho */
+    overflow-y: auto;    /* vertical scroll agar content zyada ho */
+    padding: 20px;
+  }
+
+  .modal-content.product-detail img {
+    height: 180px;       /* image thodi choti ho mobile me */
+    margin-bottom: 10px;
+  }
+
+  .close {
+    top: 5px;            /* thoda upar corner me */
+    right: 10px;         /* thoda left side */
+    font-size: 24px;     /* button visible aur bada */
+  }
+}
 
 .modal-content{
   background:#EDFFED;
