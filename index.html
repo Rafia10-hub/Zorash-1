@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zarosh</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo"><img src="logo2.jpg" alt="Logo"> </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#cart">Cart</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Premium Quality Products</h1>
+  <p>Eco-friendly & powerful solutions for your home</p>
+  <button class="btn" onclick="scrollToProducts()">Shop Now</button>
+</section>
+
+<section class="section" id="products">
+<h2>Our Products</h2>
+
+<button id="backBtn" class="back-btn" onclick="goBack()">← Back</button>
+
+<div class="categories" id="categoryBox">
+  <div class="cat-btn" onclick="filterProducts('cleaning', this)">
+    <img src="cleaning_image.jpg" alt="Cleaning" class="cat-icon">
+    <span>Lush Green</span>
+  </div>
+  <div class="cat-btn" onclick="filterProducts('beverages', this)">
+    <img src="coming soon1.jpg" alt="Beverages" class="cat-icon">
+    <span>Coming soon..</span>
+  </div>
+  <div class="cat-btn" onclick="filterProducts('others', this)">
+    <img src="deo.jpg" alt="Others" class="cat-icon">
+    <span>Coming Soon...</span>
+  </div>
+</div>
+
+<div class="products">
+  <!-- Cleaning Products -->
+  <div class="product-card cleaning hidden">
+    <img src="Hand_wash.jpg" onclick="openProduct('handwash500')">
+
+    <h3>Hand Wash(Aqua Blue) 500ml</h3>
+    <p class="price">Rs. 380</p>
+    <button class="btn" onclick="addToCart('Hand Wash(Aqua Blue) 500ml',380)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="applegreen-handwash.jpg" onclick="openProduct('handwashblue500')" >
+    <h3>Hand Wash(Apple Green) 500ml</h3>
+    <p class="price">Rs. 380</p>
+    <button class="btn" onclick="addToCart('Hand Wash(Apple Green) 500ml',380)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="Handwash2.jpg" onclick="openProduct('handwashblue250')">
+    <h3>Hand Wash(Aqua Blue) 250ml</h3>
+    <p class="price">Rs. 290</p>
+    <button class="btn" onclick="addToCart('Hand Wash(Aqua Blue) 250ml',290)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="Handwash3.jpg" onclick="openProduct('handwash250')">
+    <h3>Hand Wash(Apple Green) 250ml</h3>
+    <p class="price">Rs. 290</p>
+    <button class="btn" onclick="addToCart('Hand Wash(Apple Green) 250ml',290)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="Laundry.jpg" onclick="openProduct('laundry')">
+    <h3>Laundry Detergent 500ml</h3>
+    <p class="price">Rs. 285</p>
+    <button class="btn" onclick="addToCart('Laundry Detergent 500ml',285)">Add to Cart</button>
+  </div>
+  
+  <div class="product-card cleaning hidden">
+    <img src="dishWash1.jpg" onclick="openProduct('dishwash')">
+    <h3>🧽Mr. Clean 🍋Lemon Dishwashing Liquid ✨ 275ml</h3>
+    <p class="price">Rs. 160</p>
+    <button class="btn" onclick="addToCart('🧽Mr. Clean Dish Wash Liquid ✨',160)">Add to Cart</button>
+  </div>
+  
+  <div class="product-card cleaning hidden">
+    <img src="dishWash2.jpg" onclick="openProduct('dishwash1')">
+    <h3>🧽Mr. Clean 🍋Lemon Dishwashing Liquid ✨ 500ml</h3>
+    <p class="price">Rs. 190</p>
+    <button class="btn" onclick="addToCart('🧽Mr. Clean Dish Wash Liquid ✨',190)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="dishWash3.jpg" onclick="openProduct('dishwash2')">
+    <h3>🧽Mr. Clean 🍋Lemon Dishwashing Liquid ✨ 250ml</h3>
+    <p class="price">Rs. 150</p>
+    <button class="btn" onclick="addToCart('🧽Mr. Clean Dish Wash Liquid ✨',150)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="bleach.jpg" onclick="openProduct('bleach')">
+    <h3>Mr. Clean Power Bleach 🧴</h3>
+    <p class="price">Rs. 220</p>
+    <button class="btn" onclick="addToCart('Mr. Clean Power Bleach 🧴',220)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="phenyl.jpg" onclick="openProduct('phenyl')">
+    <h3>Mr. Clean Phenyle✨ Multipurpose Floor Cleaner 500ml </h3>
+    <p class="price">Rs. 280</p>
+    <button class="btn" onclick="addToCart('Mr. Clean Phenyle✨',280)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="phenyl1.jpg" onclick="openProduct('phenyl')">
+    <h3>Mr. Clean Phenyle✨ Multipurpose Floor Cleaner 250ml </h3>
+    <p class="price">Rs. 180</p>
+    <button class="btn" onclick="addToCart('Mr. Clean Phenyle✨',180)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="toiletcleaner.jpg" onclick="openProduct('toiletcleaner')">
+    <h3>🚽 Toilet Cleaner ✨ Mr. Clean Power Plus 🧴500ml </h3>
+    <p class="price">Rs. 170</p>
+    <button class="btn" onclick="addToCart('Mr. Clean Phenyle✨',170)">Add to Cart</button>
+  </div>
+
+  <!-- Beverages -->
+  <div class="product-card beverages hidden">
+    <img src="vinegar.jpg">
+    <h3>coming soon..</h3>
+    <p class="price">00</p>
+    <button class="btn" onclick="addToCart('Vinegar',300)">Add to Cart</button>
+  </div>
+
+  <div class="product-card beverages hidden">
+    <img src="sharbat-e-smraat.jpg">
+    <h3>coming soon..</h3>
+    <p class="price">00</p>
+    <button class="btn" onclick="addToCart('Vinegar',300)">Add to Cart</button>
+  </div>
+
+  <div class="product-card beverages hidden">
+    <img src="mango.jpg">
+    <h3>coming soon..</h3>
+    <p class="price">00</p>
+    <button class="btn" onclick="addToCart('Vinegar',300)">Add to Cart</button>
+  </div>
+
+  <div class="product-card beverages hidden">
+    <img src="apple.jpg">
+    <h3>coming soon..</h3>
+    <p class="price">00</p>
+    <button class="btn" onclick="addToCart('Vinegar',300)">Add to Cart</button>
+  </div>
+
+  <div class="product-card beverages hidden">
+    <img src="lychee.jpg">
+    <h3>coming soon..</h3>
+    <p class="price">00</p>
+    <button class="btn" onclick="addToCart('Vinegar',300)">Add to Cart</button>
+  </div>
+
+  <!-- Others -->
+  <div class="product-card others hidden">
+    <img src="shirt.jpg">
+    <h3>Sky Blue Shirt</h3>
+    <p class="price">...</p>
+    <button class="btn" onclick="addToCart('Sky Blue Shirt',600)">Add to Cart</button>
+  </div>
+  <div class="product-card others hidden">
+    <img src="shirt2.jpg">
+    <h3>Dark Blue Shirt</h3>
+    <p class="price">...</p>
+    <button class="btn" onclick="addToCart('Dark Blue Shirt',600)">Add to Cart</button>
+  </div>
+</div>
+</section>
+
+<section class="section" id="cart">
+<h2>Your Cart</h2>
+<div id="cartItems"></div>
+<h3 id="total"></h3>
+<button class="btn" onclick="openCheckout()">Checkout</button>
+<a id="waLink" class="whatsapp" target="_blank">Order on WhatsApp</a>
+</section>
+
+<!-- CUSTOMER DETAILS MODAL -->
+<div id="checkoutModal" class="modal">
+  <div class="modal-content">
+    <h2>Customer Details</h2>
+
+    <input type="text" id="cname" placeholder="Full Name" required>
+    <input type="email" id="cemail" placeholder="Email Address">
+    <input type="tel" id="cphone" placeholder="Phone Number" required>
+    <input type="text" id="caddress" placeholder="Address" required>
+    <input type="text" id="ccity" placeholder="City" required>
+
+    <select id="paymentMethod" required>
+      <option value="">Select Payment Method</option>
+      <option value="jazzcash">JazzCash</option>
+      <option value="bank">Bank Transfer</option>
+      <option value="cod">Cash on Delivery</option>
+    </select>
+
+    <button class="btn" onclick="confirmOrder()">Confirm Order</button>
+    <button class="btn cancel" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- PRODUCT DETAILS MODAL -->
+<div id="productModal" class="modal">
+  <div class="modal-content product-detail">
+    <span class="close" onclick="closeProduct()">×</span>
+
+    <img id="pImg">
+    <h2 id="pName"></h2>
+    <p id="pDesc"></p>
+
+    <div class="reviews">⭐⭐⭐⭐☆ (4.2)</div>
+
+    <button class="btn" id="modalCartBtn">Add to Cart</button>
+  </div>
+</div>
+
+<footer>
+<p>© 2025 Cleanly</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
