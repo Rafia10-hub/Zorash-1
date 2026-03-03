@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zarosh</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo"><img src="images/logo.jpg" alt="Logo"> </div>
+    <div class="logo"><img src="images/kleenlogo.jpg" alt="Logo"> </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#cart">Cart</a>
+      <a href="our-story.html">Our Company</a>
+      <a href="#">Our Partners</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="slider">
+
+    <div class="slide active">
+      <img src="images/banner1.jpg" alt="Banner 1">
+    </div>
+
+    <div class="slide">
+      <img src="images/banner2.jpg" alt="Banner 2">
+    </div>
+
+    <div class="slide">
+      <img src="images/banner.jpg" alt="Banner 3">
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="products">
+<h2>Our Products</h2>
+
+<button id="backBtn" class="back-btn" onclick="goBack()">← Back</button>
+
+<div class="categories" id="categoryBox">
+  <div class="cat-btn" onclick="filterProducts('cleaning', this)">
+    <img src="images/kleenlogo.jpg" alt="Cleaning" class="cat-icon">
+    <span>Mr. Kleen</span>
+  </div>
+  <div class="cat-btn" onclick="window.location.href='bulk.html'">
+    <img src="images/kleenlogo.jpg" alt="Others" class="cat-icon">
+    <span>Bulk Orders</span>
+  </div>
+  <div class="cat-btn" onclick="filterProducts('beverages', this)">
+    <img src="images/coming soon1.jpg" alt="Beverages" class="cat-icon">
+    <span>Coming soon..</span>
+  </div>
+  <div class="cat-btn" onclick="filterProducts('others', this)">
+    <img src="images/deo.jpg" alt="Others" class="cat-icon">
+    <span>Coming Soon...</span>
+  </div>
+
+</div>
+
+<div class="products">
+  <!-- Cleaning Products -->
+  <div class="product-card cleaning hidden">
+    <img src="images/Hand_wash.jpg" onclick="openProduct('handwash500')">
+
+    <h3>Hand Wash(Aqua Blue) 500ml</h3>
+    <p class="price">Rs. 300</p>
+    <button class="btn" onclick="addToCart('Hand Wash(Aqua Blue) 500ml',300)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/applegreen-handwash.jpg" onclick="openProduct('handwashblue500')" >
+    <h3>Hand Wash(Apple Green) 500ml</h3>
+    <p class="price">Rs. 300</p>
+    <button class="btn" onclick="addToCart('Hand Wash(Apple Green) 500ml',300)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/Handwash2.jpg" onclick="openProduct('handwashblue250')">
+    <h3>Hand Wash(Aqua Blue) 250ml</h3>
+    <p class="price">Rs. 200</p>
+    <button class="btn" onclick="addToCart('Hand Wash(Aqua Blue) 250ml',200)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/Handwash3.jpg" onclick="openProduct('handwash250')">
+    <h3>Hand Wash(Apple Green) 250ml</h3>
+    <p class="price">Rs. 200</p>
+    <button class="btn" onclick="addToCart('Hand Wash(Apple Green) 250ml',200)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/Laundry.jpg" onclick="openProduct('laundry')">
+    <h3>LIguid Detergent 500ml</h3>
+    <p class="price">Rs. 325</p>
+    <button class="btn" onclick="addToCart('Liquid Detergent 500ml',325)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/Laundry-1.jpg" onclick="openProduct('laundry-1')">
+    <h3>LIguid Detergent 1L</h3>
+    <p class="price">Rs. 550</p>
+    <button class="btn" onclick="addToCart('Liquid Detergent 1L',550)">Add to Cart</button>
+  </div>
+  
+  <div class="product-card cleaning hidden">
+    <img src="images/dishWash1.jpg" onclick="openProduct('dishwash')">
+    <h3>🧽Mr. Kleen 🍋Lemon Dishwashing Liquid ✨ 275ml</h3>
+    <p class="price">Rs. 155</p>
+    <button class="btn" onclick="addToCart('🧽Mr. Kleen Dish Wash Liquid ✨',155)">Add to Cart</button>
+  </div>
+  
+  <div class="product-card cleaning hidden">
+    <img src="images/dishWash2.jpg" onclick="openProduct('dishwash1')">
+    <h3>🧽Mr. Kleen 🍋Lemon Dishwashing Liquid ✨ 500ml</h3>
+    <p class="price">Rs. 250</p>
+    <button class="btn" onclick="addToCart('🧽Mr. Kleen Dish Wash Liquid ✨',250)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/dishWash3.jpg" onclick="openProduct('dishwash2')">
+    <h3>🧽Mr. Kleen 🍋Lemon Dishwashing Liquid ✨ 250ml</h3>
+    <p class="price">Rs. 155</p>
+    <button class="btn" onclick="addToCart('🧽Mr. Kleen Dish Wash Liquid ✨',155)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/dishWash4.jpg" onclick="openProduct('dishwash4')">
+    <h3>🧽Mr. Kleen 🍋Lemon Dishwashing Liquid ✨ 5 Liter</h3>
+    <p class="price">Rs. coming soon..</p>
+    <button class="btn" onclick="addToCart('🧽Mr. Kleen Dish Wash Liquid ✨',0)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/bleach.jpg" onclick="openProduct('bleach')">
+    <h3>Mr. Kleen Power Bleach 🧴 600ml</h3>
+    <p class="price">Rs. 220</p>
+    <button class="btn" onclick="addToCart('Mr. Clean Power Bleach 🧴',220)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/bleach1.jpg" onclick="openProduct('bleach3')">
+    <h3>Mr. Kleen Power Bleach 🧴 5 Liter</h3>
+    <p class="price">Rs. coming soon</p>
+    <button class="btn" onclick="addToCart('Mr. Clean Power Bleach 🧴',0)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/colorbleach.jpg" onclick="openProduct('bleach1')">
+    <h3>Mr. Kleen Color Bleach 🧴 600ml</h3>
+    <p class="price">Rs. 275</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen color Bleach 🧴',275)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/colorbleach1.jpg" onclick="openProduct('bleach2')">
+    <h3>Mr. Kleen Color Bleach 🧴 5 Liter</h3>
+    <p class="price">Rs. coming soon..</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen color Bleach 🧴',0)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/sweep.jpg" onclick="openProduct('sweep')">
+    <h3>Mr. Kleen Sweep Red Strong Cleaner🧴 600ml</h3>
+    <p class="price">Rs. 225</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Sweep Red Strong Cleaner🧴',225)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/phenyl.jpg" onclick="openProduct('phenyl')">
+    <h3>Mr. Kleen Phenyle✨ Multipurpose Floor Cleaner 500ml </h3>
+    <p class="price">Rs. 270</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Phenyle✨',270)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/phenyl1.jpg" onclick="openProduct('phenyl1')">
+    <h3>Mr. Kleen Phenyle✨ Multipurpose Floor Cleaner 250ml </h3>
+    <p class="price">Rs. 210</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Phenyle✨',210)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/phenyl2.jpg" onclick="openProduct('phenyl2')">
+    <h3>Mr. Kleen Phenyle✨ Multipurpose Floor Cleaner 3L </h3>
+    <p class="price">Rs. 350</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Phenyle✨',350)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/glasscleaner.jpg" onclick="openProduct('glasscleaner')">
+    <h3>Mr. Kleen Glass Cleaner✨ 500ml </h3>
+    <p class="price">Rs. 300</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Glass Cleaner✨',300)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/toiletcleaner.jpg" onclick="openProduct('toiletcleaner')">
+    <h3>🚽 Toilet Cleaner ✨ Mr. Kleen Power Plus 🧴500ml </h3>
+    <p class="price">Rs. 350</p>
+    <button class="btn" onclick="addToCart('🚽 Toilet Cleaner ✨ Mr. Kleen Power Plus 🧴',350)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/toiletcleaner1.jpg" onclick="openProduct('toiletcleaner1')">
+    <h3>🚽 Toilet Cleaner ✨ Mr. Kleen Power Plus 🧴250ml </h3>
+    <p class="price">Rs. 225</p>
+    <button class="btn" onclick="addToCart('🚽 Toilet Cleaner ✨ Mr. Kleen Power Plus 🧴✨',225)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/toiletcleaner2.jpg" onclick="openProduct('toiletcleaner2')">
+    <h3>🚽 Toilet Cleaner ✨ Mr. Kleen Power Plus 🧴 5 Liter </h3>
+    <p class="price">Rs. coming soon..</p>
+    <button class="btn" onclick="addToCart('🚽 Toilet Cleaner ✨ Mr. Kleen Power Plus 🧴✨',0)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/multisurface.jpg" onclick="openProduct('multisurface')">
+    <h3>Mr. Kleen Multi-Surface Cleaner ✨ 1 Liter</h3>
+    <p class="price">Rs. 600</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Multi-Surface Cleaner ✨ 1 Liter',600)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/multisurface1.jpg" onclick="openProduct('multisurface1')">
+    <h3>Mr. Kleen Multi-Surface Cleaner Anti-bacterial ✨ 1 Liter</h3>
+    <p class="price">Rs. 600</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Multi-Surface Cleaner Anti-bacterial ✨ 1 Liter',600)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/multisurface3.jpg" onclick="openProduct('multisurface3')">
+    <h3>Mr. Kleen Multi-Surface Cleaner ✨ 500ml</h3>
+    <p class="price">Rs. 350</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Multi-Surface Cleaner Anti-bacterial ✨ 500ml',350)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/multisurface4.jpg" onclick="openProduct('multisurface4')">
+    <h3>Mr. Kleen Multi-Surface Cleaner Anti-bacterial ✨ 500ml</h3>
+    <p class="price">Rs. 350</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Multi-Surface Cleaner Anti-bacterial ✨ 500ml',350)">Add to Cart</button>
+  </div>
+
+   <div class="product-card cleaning hidden">
+    <img src="images/multisurface2.jpg" onclick="openProduct('multisurface2')">
+    <h3>Mr. Kleen Multi-Surface Cleaner Anti-bacterial ✨ 5 Liter</h3>
+    <p class="price">Rs. coming soon..</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Multi-Surface Cleaner Anti-bacterial ✨ 5 Liter',0)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/neel.jpg" onclick="openProduct('neel')">
+    <h3>Mr. Kleen Liquid Neel ✨ 75ml</h3>
+    <p class="price">Rs. 80</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Liquid Neel✨',80)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/neel1.jpg" onclick="openProduct('neel1')">
+    <h3>Mr. Kleen Liquid Neel ✨ 100ml</h3>
+    <p class="price">Rs. 95</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Liquid Neel✨',95)">Add to Cart</button>
+  </div>
+
+  <div class="product-card cleaning hidden">
+    <img src="images/neel2.jpg" onclick="openProduct('neel2')">
+    <h3>Mr. Kleen Liquid Neel ✨ 150ml</h3>
+    <p class="price">Rs. 125</p>
+    <button class="btn" onclick="addToCart('Mr. Kleen Liquid Neel✨',125)">Add to Cart</button>
+  </div>
+
+  <!-- Beverages -->
+  <div class="product-card beverages hidden">
+    <img src="images/vinegar.jpg">
+    <h3>coming soon..</h3>
+    <p class="price">00</p>
+    <button class="btn" onclick="addToCart('Vinegar',300)">Add to Cart</button>
+  </div>
+
+  <div class="product-card beverages hidden">
+    <img src="images/sharbat-e-smraat.jpg">
+    <h3>coming soon..</h3>
+    <p class="price">00</p>
+    <button class="btn" onclick="addToCart('Vinegar',300)">Add to Cart</button>
+  </div>
+
+  
+  <!-- Others -->
+  <div class="product-card others hidden">
+    <img src="images/toiletcleaner3.jpg" onclick="openProduct('toiletcleaner3')">
+    <h3>Mr. Kleen Toilet Bowl Cleaner ✨ 500ml</h3>
+    <p class="price">coming soon...</p>
+    <button class="btn" onclick="addToCart('Toilet Bowl Cleaner',0)">Add to Cart</button>
+  </div>
+
+  <div class="product-card others hidden">
+    <img src="images/zospel.jpg" onclick="openProduct('zospel')">
+    <h3>Zospel ✨ 45ml</h3>
+    <p class="price">coming soon...</p>
+    <button class="btn" onclick="addToCart('Zospel',0)">Add to Cart</button>
+  </div>
+
+  <div class="product-card others hidden">
+    <img src="images/hand_sanitizer.jpg" onclick="openProduct('sanitizer')">
+    <h3>Hand Sanitizer ✨ 150ml</h3>
+    <p class="price">coming soon...</p>
+    <button class="btn" onclick="addToCart('Hand Sanitizer',0)">Add to Cart</button>
+  </div>
+
+</div>
+</section>
+
+<section class="section" id="cart">
+<h2>Your Cart</h2>
+<div id="cartItems"></div>
+<h3 id="total"></h3>
+<button class="btn" onclick="openCheckout()">Checkout</button>
+<a id="waLink" class="whatsapp" target="_blank">Order on WhatsApp</a>
+</section>
+
+<!-- CUSTOMER DETAILS MODAL -->
+<div id="checkoutModal" class="modal">
+  <div class="modal-content">
+    <h2>Customer Details</h2>
+
+    <input type="text" id="cname" placeholder="Full Name" required>
+    <input type="email" id="cemail" placeholder="Email Address">
+    <input type="tel" id="cphone" placeholder="Phone Number" required>
+    <input type="text" id="caddress" placeholder="Address" required>
+    <input type="text" id="ccity" placeholder="City" required>
+
+    <select id="paymentMethod" onchange="showPaymentDetails()">
+      <option value="">Select Payment Method</option>
+      <option value="COD">Cash On Delivery</option>
+   </select>
+
+   <div id="paymentDetails" style="margin-top:10px;"></div>
+
+    <button class="btn" onclick="confirmOrder()">Confirm Order</button>
+    <button class="btn cancel" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- PRODUCT DETAILS MODAL -->
+<div id="productModal" class="modal">
+  <div class="modal-content product-detail">
+    <span class="close" onclick="closeProduct()">×</span>
+
+    <img id="pImg">
+    <h2 id="pName"></h2>
+    <p id="pDesc"></p>
+
+    <div class="reviews">⭐⭐⭐⭐☆ (4.2)</div>
+
+    <button class="btn" id="modalCartBtn">Add to Cart</button>
+  </div>
+</div>
+
+
+<!-- RECEIPT MODAL -->
+<div id="receiptModal" class="modal">
+  <div class="modal-content" id="receiptContent">
+    <h2>🧾 Order Receipt</h2>
+
+    <!-- Notice for user -->
+    <div class="notice">
+      Please take a screenshot first, then click on 'Share to WhatsApp'. Thank you!
+    </div>
+
+    <!-- Receipt details -->
+    <div id="receiptDetails"></div>
+
+    <!-- Optional preview image (hidden by default) -->
+    <img id="receiptPreview" style="width:100%; display:none; margin-top:15px; border-radius:10px;"/>
+
+    <!-- WhatsApp share button -->
+    <button class="btn" id="waSendBtn" style="display:none;">Click to Send on WhatsApp</button>
+
+    <!-- Close button -->
+    <button class="btn" onclick="closeReceipt()">Close</button>
+  </div>
+</div>
+
+<!-- footer section -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- Column 1 -->
+    <div class="footer-col">
+      <h3>Contact Us</h3>
+      <a href="our-story.html">About Us</a>
+      <p><strong>Zarosh International Co</strong></p>
+      <p>R-29, 13D/1, Gulshan-e-Iqbal, Karachi</p>
+      <p>Whatsapp: 0092-331-222-1647</p>
+      <p>cell: 0092-321-267-4640</p>
+      <p>Email: Zarosh.int.co@gmail.com</p>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+      <a href="#" target="_blank">Instagram</a><br>
+      <a href="#" target="_blank">Facebook</a><br>
+      <a href="#" target="_blank">Daraz</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Zarosh</p>
+  </div>
+
+</footer>
+<script>
+  const slides = document.querySelectorAll(".slide");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+  }
+
+  function nextSlide() {
+    current++;
+    if (current >= slides.length) {
+      current = 0;
+    }
+    showSlide(current);
+  }
+
+  setInterval(nextSlide, 3000); // 3 seconds
+</script>
+<script src="script.js"></script>
+</body>
+</html>

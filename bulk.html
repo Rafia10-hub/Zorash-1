@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MR. KLEEN | Bulk Orders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --c1: #FEF9E1;
+      --c2: #ffffff;
+      --c3: #FD9800;
+      --c4: #FD9800;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background: var(--c1);
+      color:#333;
+    }
+
+    /* HERO */
+    
+    /* PRODUCT CARDS */
+    .bulk-products-section{
+      width:100%;
+      max-width:1100px;
+      margin: -50px auto 50px auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .bulk-product-card{
+      background: var(--c2);
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.05);
+      transition:0.3s;
+    }
+
+    .bulk-product-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .bulk-product-card h3{
+      color: var(--c3);
+      margin-bottom:10px;
+      font-size:18px;
+    }
+
+    .bulk-product-card p{
+      font-size:14px;
+      color:#555;
+    }
+
+    /* BULK PACKING */
+    .industrial-packaging{
+      text-align:center;
+      margin:60px 0;
+    }
+
+    .industrial-packaging h3{
+      font-size:22px;
+      margin-bottom:20px;
+      color: var(--c3);
+    }
+
+    .pack-size-options{
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:2px;
+    }
+
+    .story-section img {
+      display: block;
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 20px auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* CTA */
+    .bulk-order-cta{
+      background: var(--c3);
+      color: var(--c2);
+      text-align:center;
+      padding:50px 20px;
+    }
+
+    .bulk-order-cta h2{
+      margin-bottom:15px;
+      font-weight:600;
+    }
+
+    .bulk-order-cta p{
+      margin-bottom:20px;
+    }
+
+    .bulk-order-cta button{
+      background: var(--c2);
+      color: var(--c3);
+      padding:12px 30px;
+      border:none;
+      border-radius:30px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .bulk-order-cta button:hover{
+      background:#fff3d9;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .hero h1{
+        font-size:2rem;
+      }
+      /* =========================
+   PROPER MOBILE RESPONSIVE
+   ========================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+
+  .bulk-products-section {
+    grid-template-columns: 1fr 1fr;
+    margin: 20px auto;
+  }
+
+  .hero {
+    height: 220px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .industrial-packaging {
+    margin: 40px 0;
+  }
+
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+  .bulk-products-section {
+    grid-template-columns: 1fr;   /* ONE card per row */
+    margin: 20px auto;
+  }
+
+  .bulk-product-card {
+    padding: 18px;
+  }
+
+  .hero {
+    height: 180px;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .pack-size-options {
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  .bulk-order-cta h2 {
+    font-size: 18px;
+  }
+
+  .bulk-order-cta p {
+    font-size: 14px;
+  }
+
+  .bulk-order-cta button {
+    width: 100%;   /* full width button on mobile */
+    max-width: 280px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <div class="logo"><img src="images/logo.jpg" alt="Logo"> </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html">Products</a>
+      <a href="index.html">Cart</a>
+      <a href="our-story.html">Our Company</a>
+      <a href="#">Our Partners</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </div>
+</header>
+  <!-- HERO -->
+ 
+  <div class="story-section">
+        <img src="images/bulk.jpg" alt="image">
+       <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+  <!-- PRODUCTS -->
+  <section class="bulk-products-section">
+
+    <div class="bulk-product-card">
+      <h3>Phenyl Floor Cleaner</h3>
+      <p>Powerful disinfectant with long-lasting freshness.</p>
+    </div>
+
+    <div class="bulk-product-card">
+      <h3>Toilet Bowl Cleaner</h3>
+      <p>Thick clinging formula removes tough stains & limescale.</p>
+    </div>
+
+    <div class="bulk-product-card">
+      <h3>Power Bleach</h3>
+      <p>Strong sanitizing solution effective against germs & bacteria.</p>
+    </div>
+
+    <div class="bulk-product-card">
+      <h3>Liquid Laundry Detergent</h3>
+      <p>Commercial-grade stain removal for hotel & institutional laundry.</p>
+    </div>
+
+    <div class="bulk-product-card">
+      <h3>Dishwashing Liquid (Commercial Grade)</h3>
+      <p>Heavy-duty grease cutter for high-volume kitchens.</p>
+    </div>
+
+  </section>
+
+  
+
+  <!-- CTA -->
+  <section class="bulk-order-cta">
+    <h2>ECONOMICAL • POWERFUL • RELIABLE</h2>
+    <p>MR. KLEEN – Trusted Partner in Professional Hygiene</p>
+    <h4>Click Below for Contact Us</h4>
+    <button onclick="window.location.href='https://wa.me/923312221647'">
+      Contact Now for Bulk Orders & Distributorship
+    </button>
+  </section>
+  
+  <!-- BULK PACKING -->
+  <section class="industrial-packaging">
+    <h3>Available in Bulk Packing</h3>
+    <div class="pack-size-options">
+      5 LITER  |  10 LITER  |  30 LITER INDUSTRIAL DRUMS
+    </div>
+  </section>
+  <!-- footer section -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- Column 1 -->
+    <div class="footer-col">
+      <h3>Contact Us</h3>
+      <a href="our-story.html">About Us</a>
+      <p><strong>Zarosh International Co</strong></p>
+      <p>R-29, 13D/1, Gulshan-e-Iqbal, Karachi</p>
+      <p>Whatsapp: 0092-331-222-1647</p>
+      <p>cell: 0092-321-267-4640</p>
+      <p>Email: Zarosh.int.co@gmail.com</p>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+      <a href="#" target="_blank">Instagram</a><br>
+      <a href="#" target="_blank">Facebook</a><br>
+      <a href="#" target="_blank">Daraz</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Zarosh</p>
+  </div>
+
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
