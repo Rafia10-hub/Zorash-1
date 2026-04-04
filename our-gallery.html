@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zarosh Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo"><img src="images/logo.jpg" alt="Logo"> </div>
+    <div class="logo"><img src="images/kleenlogo.jpg" alt="Logo"> </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html">Products</a>
+      <a href="index.html">Cart</a>
+      <a href="our-story.html">Our Company</a>
+      <a href="our-gallery.html">Our Gallery</a>
+      <a href="#">Our Partners</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<section class="gallery">
+  <h1>Mr. Kleen Products</h1>
+  <div class="gallery-container">
+
+    <div class="gallery-item">
+      <img src="images/logo.jpg" alt="Logo" onclick="openProduct('logo100')">
+      <div class="play-icon" onclick="openProduct('logo100')">▶</div>
+      <div class="overlay">LOGO</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/hero-bg.jpg" alt="Products" onclick="openProduct('products200')">
+      <div class="play-icon" onclick="openProduct('products200')">▶</div>
+      <div class="overlay">Our Products</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/kleenlogo.jpg" alt="Products" onclick="openProduct('ad100')">
+      <div class="play-icon" onclick="openProduct('ad100')">▶</div>
+      <div class="overlay">Mr kleen</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/kleen.jpg" alt="Products" onclick="openProduct('ad200')">
+      <div class="play-icon" onclick="openProduct('ad200')">▶</div>
+      <div class="overlay">Mr kleen</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/neel.jpg" alt="NEEL" onclick="openProduct('neel300')">
+      <div class="play-icon" onclick="openProduct('neel300')">▶</div>
+      <div class="overlay">NEEL</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/Laundry-1.jpg" alt="Detergent" onclick="openProduct('detergent400')">
+      <div class="play-icon" onclick="openProduct('detergent400')">▶</div>
+      <div class="overlay">Detergent</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/Laundry-1.jpg" alt="Detergent" onclick="openProduct('detergent200')">
+      <div class="play-icon" onclick="openProduct('detergent200')">▶</div>
+      <div class="overlay">Detergent</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/toiletcleaner.jpg" alt="Toilet Cleaner" onclick="openProduct('toilet500')">
+      <div class="play-icon" onclick="openProduct('toilet500')">▶</div>
+      <div class="overlay">Toilet Cleaner</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/Hand_wash.jpg" alt="Hand Wash" onclick="openProduct('handwash500')">
+      <div class="play-icon" onclick="openProduct('handwash500')">▶</div>
+      <div class="overlay">Hand Wash</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/glasscleaner.jpg" alt="Glass Cleaner" onclick="openProduct('glass600')">
+      <div class="play-icon" onclick="openProduct('glass600')">▶</div>
+      <div class="overlay">Glass Cleaner</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/multisurface1.jpg" alt="Glass Cleaner" onclick="openProduct('multisurface')">
+      <div class="play-icon" onclick="openProduct('multisurface')">▶</div>
+      <div class="overlay">Multisurface Cleaner</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/Phenyl.jpg" alt="Phenyl" onclick="openProduct('phenyl700')">
+      <div class="play-icon" onclick="openProduct('phenyl700')">▶</div>
+      <div class="overlay">Phenyl</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <span id="close">&times;</span>
+  <div id="lightbox-content"></div>
+</div>
+
+<script src="script.js"></script>
+<!-- footer section -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- Column 1 -->
+    <div class="footer-col">
+      <h3>Contact Us</h3>
+      <a href="our-story.html">About Us</a>
+      <p><strong>Zarosh International Co</strong></p>
+      <p>R-29, 13D/1, Gulshan-e-Iqbal, Karachi</p>
+      <p>Whatsapp: 0092-331-222-1647</p>
+      <p>cell: 0092-321-267-4640</p>
+      <p>Email: Zarosh.int.co@gmail.com</p>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+      <a href="#" target="_blank">Instagram</a><br>
+      <a href="#" target="_blank">Facebook</a><br>
+      <a href="#" target="_blank">Daraz</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Zarosh</p>
+  </div>
+
+</footer>
+</body>
+</html>
