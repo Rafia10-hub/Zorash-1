@@ -582,3 +582,62 @@ function closeProduct(){
 function toggleMenu(){
   document.querySelector(".nav-links").classList.toggle("show");
 }
+
+// Video paths array
+
+// Map of product IDs to video paths
+const videoMap = {
+    'logo100': 'videos/video.mp4',
+    'products200': 'videos/video1.mp4',
+    'ad100': 'videos/video8.mp4',
+    'ad200': 'videos/video9.mp4',
+    'neel300': 'videos/video2.mp4',
+    'detergent400': 'videos/video3.mp4',
+    'detergent200': 'videos/video10.mp4',
+    'toilet500': 'videos/video4.mp4',
+    'handwash500': 'videos/video5.mp4',
+    'glass600': 'videos/video6.mp4',
+    'multisurface': 'videos/video11.mp4',
+    'phenyl700': 'videos/video7.mp4'
+};
+
+function openProduct(productId) {
+    const videoSrc = videoMap[productId];
+    if(!videoSrc) return;
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightbox-content');
+
+    // Remove previous video
+    lightboxContent.innerHTML = '';
+
+    // Create video element
+    const video = document.createElement('video');
+    video.src = videoSrc;
+    video.controls = true;
+    video.autoplay = true;
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.objectFit = "contain";
+
+    lightboxContent.appendChild(video);
+    lightbox.style.display = 'flex';
+}
+
+// Close button
+document.getElementById('close').addEventListener('click', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightbox-content');
+    lightbox.style.display = 'none';
+    lightboxContent.innerHTML = '';
+});
+
+// Close when clicking outside
+document.getElementById('lightbox').addEventListener('click', e => {
+    if(e.target === e.currentTarget) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxContent = document.getElementById('lightbox-content');
+        lightbox.style.display = 'none';
+        lightboxContent.innerHTML = '';
+    }
+});
