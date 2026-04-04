@@ -401,7 +401,6 @@ function renderCart() {
     `;
     total += item.price;
   });
-
   if(cart.length > 0){
     html += `<p>Delivery Charge - Rs.${DELIVERY_CHARGE}</p>`;
     total += DELIVERY_CHARGE;
