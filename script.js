@@ -367,7 +367,7 @@ Use MR-KLEEN Blue Neel on your deeply washed clothes to make them look even brig
 /* ================= GLOBALS ================= */
 
 let cart = [];
-const DELIVERY_CHARGE = 150;
+const DELIVERY_CHARGE = 200;
 
 /* ================= START ================= */
 
@@ -401,6 +401,7 @@ function renderCart() {
     `;
     total += item.price;
   });
+
   if(cart.length > 0){
     html += `<p>Delivery Charge - Rs.${DELIVERY_CHARGE}</p>`;
     total += DELIVERY_CHARGE;
@@ -476,33 +477,41 @@ function generateReceipt(orderID, name, phone, address, city, paymentMethod, tot
   });
 }
 
-function openWhatsApp(orderID, total, name, phone, address, city, paymentMethod){
+function openWhatsApp(orderID, total, name, phone, address, city, paymentMethod) {
   let businessNumber = "923312221647";
 
-  let message = `Hello Zarosh,
-Order ID: ${orderID}
-Customer: ${name}
+  // Products list
+  let itemsList = "";
+  cart_snapshot.forEach((item, i) => {
+    itemsList += `${i + 1}. ${item.name} - Rs.${item.price}\n`;
+  });
+
+  let message = 
+`🧾 *ZAROSH ORDER RECEIPT*
+──────────────────────
+🆔 Order ID: ${orderID}
+📅 Date: ${new Date().toLocaleString()}
+
+👤 *Customer Info*
+Name: ${name}
 Phone: ${phone}
 Address: ${address}, ${city}
 Payment: ${paymentMethod}
-Total: Rs.${total}
 
-Please attach the receipt screenshot from the preview and send.`;
+📦 *Items:*
+${itemsList}
+🚚 Delivery: Rs.${DELIVERY_CHARGE}
+──────────────────────
+💰 *Total: Rs.${total}*
+
+Thank you for shopping with Zarosh 💚`;
 
   let url = `https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 }
-
-function closeReceipt(){
-  document.getElementById("receiptModal").style.display = "none";
-  document.getElementById("receiptPreview").style.display = "none";
-  document.getElementById("waSendBtn").style.display = "none";
-}
-
 /* ================= CONFIRM ORDER UPDATED ================= */
 
 function confirmOrder() {
-
   let name = document.getElementById("cname").value;
   let phone = document.getElementById("cphone").value;
   let address = document.getElementById("caddress").value;
@@ -518,11 +527,54 @@ function confirmOrder() {
   let total = DELIVERY_CHARGE;
   cart.forEach(i => total += i.price);
 
-  generateReceipt(orderID, name, phone, address, city, paymentMethod, total);
+  // ⬇️ Yeh line add karo — cart clear hone se PEHLE
+  window.cart_snapshot = [...cart];
 
+  generateReceipt(orderID, name, phone, address, city, paymentMethod, total);
   cart = [];
   renderCart();
   closeModal();
+}
+/* ================= PAYMENT SYSTEM ================= */
+function showPaymentDetails() {
+  const method = document.getElementById("paymentMethod").value;
+  const info = document.getElementById("paymentInfo");
+
+  if (method === "Bank") {
+    info.style.display = "block";
+    info.innerHTML = `
+      <p>🏦 <strong>Bank Transfer Details:</strong></p>
+      <table style="width:100%; border-collapse:collapse;">
+        <tr>
+          <td style="padding:4px;"><strong>Bank:</strong></td>
+          <td>MCB</td>
+        </tr>
+        <tr>
+          <td style="padding:4px;"><strong>Name:</strong></td>
+          <td>Zarosh International Co.</td>
+        </tr>
+        <tr>
+          <td style="padding:4px;"><strong>Account No:</strong></td>
+          <td>
+            <span id="bankAcc">0015-1762-4100-3574</span>
+            <button onclick="copyText('bankAcc')" style="margin-left:8px; padding:4px 10px; background:#25D366; color:white; border:none; border-radius:6px; cursor:pointer;">📋 Copy</button>
+          </td>
+        </tr>
+      </table>
+      <small style="color:#888;">⚠️ Please attach screenshot after payment. Thank You.</small>
+    `;
+
+  } else {
+    info.style.display = "none";
+  }
+}
+
+// Copy function
+function copyText(elementId) {
+  const text = document.getElementById(elementId).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("✅ Copied: " + text);
+  });
 }
 
 /* ================= CATEGORY SYSTEM ================= */
@@ -615,6 +667,7 @@ function openProduct(productId) {
     video.src = videoSrc;
     video.controls = true;
     video.autoplay = true;
+    video.muted = true;   // 🔇 Mute video
     video.style.width = "100%";
     video.style.height = "100%";
     video.style.objectFit = "contain";
