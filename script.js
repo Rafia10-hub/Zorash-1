@@ -42,7 +42,7 @@ function filterProducts(category) {
 function goBack() { document.getElementById('categoryBox').style.display = 'grid'; document.getElementById('backBtn').style.display = 'none'; document.querySelectorAll('.product-card').forEach(card => card.classList.add('hidden')); }
 function showComingSoon(button) { const label = button.querySelector('.category-label'); const original = label.innerHTML; label.innerHTML = 'Coming soon<span>We are working on it</span>'; setTimeout(() => label.innerHTML = original, 1800); }
 function openProduct(productId) {
-  const product = PRODUCTS[productId]; if (!product) return;
+  let product = PRODUCTS[productId]; if (!product) { const image = [...document.querySelectorAll('.product-card img')].find(img => (img.getAttribute('onclick') || '').includes("'" + productId + "'")); const card = image && image.closest('.product-card'); if (card) { const name = card.querySelector('h3')?.textContent.trim() || 'Mr. Kleen Essential'; const priceText = card.querySelector('.price, .product-bottom strong')?.textContent || ''; const price = Number((priceText.match(/[0-9]+/g) || ['0']).join('')); product = { name, img: image.src, price, desc: 'A dependable Mr. Kleen essential designed for effective everyday care. Contact us on WhatsApp for more product details.' }; } } if (!product) return;
   document.getElementById('pName').textContent = product.name; document.getElementById('pImg').src = product.img; document.getElementById('pImg').alt = product.name; document.getElementById('pDesc').textContent = product.desc;
   document.getElementById('modalCartBtn').onclick = () => { addToCart(product.name, product.price); closeProduct(); };
   document.getElementById('productModal').classList.add('open');
@@ -65,8 +65,93 @@ function toggleMenu() { const nav = document.querySelector('.nav-links'), toggle
 function showSlide(index) { const slides = document.querySelectorAll('.slide'), dots = document.querySelectorAll('.slider-dot'); slides.forEach((slide, i) => slide.classList.toggle('active', i === index)); dots.forEach((dot, i) => dot.classList.toggle('active', i === index)); }
 function nextSlide() { const slides = document.querySelectorAll('.slide'); if (!slides.length) return; slideIndex = (slideIndex + 1) % slides.length; showSlide(slideIndex); }
 
+
+function enhanceLegacyMarkup() {
+  const body = document.body;
+  if (!document.querySelector('.announcement')) {
+    const bar = document.createElement('div');
+    bar.className = 'announcement';
+    bar.innerHTML = '<span>Made for everyday living</span><span>Karachi, Pakistan · Nationwide delivery</span>';
+    body.prepend(bar);
+  }
+
+  const header = document.querySelector('header');
+  if (header) {
+    header.classList.add('site-header');
+    const navbar = header.querySelector('.navbar');
+    const logoBlocks = [...navbar.querySelectorAll(':scope > .logo')];
+    if (logoBlocks.length) {
+      const brand = document.createElement('a'); brand.className = 'brand'; brand.href = 'index.html'; brand.setAttribute('aria-label', 'Zarosh home');
+      logoBlocks.forEach((block, index) => { const img = block.querySelector('img'); if (img) { if (index === 1) img.classList.add('kleen-mark'); brand.appendChild(img); if (index === 0 && logoBlocks.length > 1) { const divider = document.createElement('span'); divider.className = 'brand-divider'; brand.appendChild(divider); } } block.remove(); });
+      navbar.prepend(brand);
+    }
+    const nav = header.querySelector('.nav-links');
+    if (nav) {
+      const labels = ['Home', 'Shop', 'Cart', 'Our story', 'Gallery', 'Bulk orders', 'Contact'];
+      [...nav.querySelectorAll('a')].forEach((link, index) => { if (labels[index]) link.textContent = labels[index]; });
+      const first = nav.querySelector('a'); if (first) first.classList.add('active');
+    }
+    if (!navbar.querySelector('.header-contact')) {
+      const contact = document.createElement('a'); contact.className = 'header-contact'; contact.href = 'https://wa.me/923312221647'; contact.target = '_blank'; contact.rel = 'noreferrer'; contact.innerHTML = 'Talk to us <span>↗</span>'; navbar.appendChild(contact);
+    }
+  }
+
+  const hero = document.querySelector('.hero');
+  if (hero && !hero.querySelector('.hero-content')) {
+    const slider = hero.querySelector('.slider'); if (slider) slider.classList.add('hero-slider');
+    const content = document.createElement('div'); content.className = 'hero-content'; content.innerHTML = '<p class="eyebrow light">Zarosh International Co.</p><h1>Care for the<br><em>everyday.</em></h1><p class="hero-copy">Thoughtful essentials for cleaner homes, softer hands, and routines that feel a little better.</p><a class="button button-light" href="#products">Explore the collection <span>↓</span></a>'; hero.appendChild(content);
+    const controls = document.createElement('div'); controls.className = 'slider-controls'; controls.innerHTML = '<button class="slider-dot active" type="button" aria-label="Show slide 1"></button><button class="slider-dot" type="button" aria-label="Show slide 2"></button><button class="slider-dot" type="button" aria-label="Show slide 3"></button>'; hero.appendChild(controls);
+  }
+
+  if (hero && !document.querySelector('.intro')) {
+    const intro = document.createElement('section'); intro.className = 'intro section-shell'; intro.innerHTML = '<div><p class="eyebrow">The Zarosh edit</p><h2>Simple products.<br><em>Considered living.</em></h2></div><p class="intro-copy">From a quick hand wash to a full home reset, Mr. Kleen brings dependable performance and a fresh point of view to the things you use every day.</p>'; hero.after(intro);
+  }
+
+  const productSection = document.getElementById('products');
+  if (productSection) {
+    productSection.classList.add('section-shell', 'collection');
+    const heading = productSection.querySelector(':scope > h2');
+    if (heading && !heading.parentElement.classList.contains('section-heading')) {
+      const wrap = document.createElement('div'); wrap.className = 'section-heading'; wrap.innerHTML = '<div><p class="eyebrow">Shop by need</p></div>'; heading.before(wrap); wrap.querySelector('div').appendChild(heading); heading.textContent = 'Find your everyday essential';
+      const back = document.getElementById('backBtn'); if (back) { back.className = 'text-button'; back.textContent = '← View categories'; wrap.appendChild(back); }
+    }
+    [...document.querySelectorAll('.cat-btn')].forEach((card, index) => { card.classList.add('category-card'); if (!card.querySelector('.category-number')) { const number = document.createElement('span'); number.className = 'category-number'; number.textContent = String(index + 1).padStart(2, '0'); card.prepend(number); const arrow = document.createElement('span'); arrow.className = 'category-arrow'; arrow.textContent = '↗'; card.appendChild(arrow); } const label = card.querySelector('span:not(.category-number):not(.category-arrow)'); if (label) label.classList.add('category-label'); });
+    const firstCategory = productSection.querySelector('.cat-btn'); if (firstCategory) firstCategory.classList.add('category-featured');
+    [...document.querySelectorAll('.product-card')].forEach(card => {
+      if (card.querySelector('.product-image')) return;
+      const img = card.querySelector(':scope > img'), title = card.querySelector(':scope > h3'), price = card.querySelector(':scope > .price'), button = card.querySelector(':scope > button');
+      if (!img || !title) return;
+      const visual = document.createElement('div'); visual.className = 'product-image'; img.before(visual); visual.appendChild(img);
+      const info = document.createElement('div'); info.className = 'product-info'; visual.after(info);
+      const kind = document.createElement('p'); kind.className = 'product-kind'; kind.textContent = /hand/i.test(title.textContent) ? 'Hand care' : /laundry|detergent/i.test(title.textContent) ? 'Laundry care' : 'Home care'; info.appendChild(kind); info.appendChild(title);
+      const bottom = document.createElement('div'); bottom.className = 'product-bottom'; info.appendChild(bottom);
+      if (price) { const strong = document.createElement('strong'); strong.textContent = price.textContent; bottom.appendChild(strong); price.remove(); }
+      if (button) { button.className = 'add-button'; button.innerHTML = 'Add to cart <span>+</span>'; bottom.appendChild(button); }
+    });
+  }
+
+  const cartSection = document.getElementById('cart');
+  if (cartSection && !cartSection.querySelector('.cart-layout')) {
+    cartSection.classList.add('section-shell', 'cart-section');
+    const heading = cartSection.querySelector(':scope > h2'); if (heading) { const wrap = document.createElement('div'); wrap.className = 'section-heading'; const box = document.createElement('div'); box.innerHTML = '<p class="eyebrow">Your selection</p>'; heading.before(wrap); wrap.appendChild(box); box.appendChild(heading); heading.textContent = 'Shopping cart'; }
+    const items = document.getElementById('cartItems'), total = document.getElementById('total'), checkout = [...cartSection.querySelectorAll(':scope > button')][0], wa = document.getElementById('waLink');
+    const layout = document.createElement('div'); layout.className = 'cart-layout'; const summary = document.createElement('aside'); summary.className = 'cart-summary';
+    if (items) { items.classList.add('cart-items'); items.before(layout); layout.appendChild(items); }
+    summary.innerHTML = '<p class="summary-label">Order summary</p><div class="summary-row"><span>Subtotal</span></div><p class="summary-note">Delivery details are confirmed on WhatsApp after checkout.</p>';
+    const row = summary.querySelector('.summary-row'); if (total) row.appendChild(total);
+    if (checkout) { checkout.className = 'button button-dark full-width'; checkout.innerHTML = 'Continue to checkout <span>→</span>'; summary.appendChild(checkout); }
+    if (wa) { wa.className = 'whatsapp-link'; wa.textContent = 'Or order directly on WhatsApp ↗'; summary.appendChild(wa); }
+    layout.appendChild(summary);
+  }
+
+  const footer = document.querySelector('.footer');
+  if (footer && !footer.querySelector('.footer-grid')) footer.innerHTML = '<div class="footer-grid section-shell"><div><a class="footer-brand" href="index.html">Zarosh<span>.</span></a><p>Everyday care, made beautifully.</p></div><div><p class="footer-label">Explore</p><a href="#products">Shop products</a><a href="bulk.html">Bulk orders</a><a href="our-story.html">Our story</a></div><div><p class="footer-label">Say hello</p><a href="https://wa.me/923312221647" target="_blank" rel="noreferrer">WhatsApp us</a><a href="mailto:zarosh.int.co@gmail.com">zarosh.int.co@gmail.com</a><span>Karachi, Pakistan</span></div></div><div class="footer-bottom section-shell"><span>© <span id="year"></span> Zarosh International Co.</span><span>Made with care in Pakistan</span></div>';
+
+  document.querySelectorAll('.modal').forEach(modal => { const content = modal.querySelector('.modal-content'); if (content && !content.querySelector('.modal-close')) { const close = document.createElement('button'); close.className = 'modal-close'; close.type = 'button'; close.textContent = '×'; close.onclick = () => modal.classList.remove('open'); content.prepend(close); } });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  renderCart(); document.getElementById('year').textContent = new Date().getFullYear();
+  enhanceLegacyMarkup(); renderCart(); const year = document.getElementById('year'); if (year) year.textContent = new Date().getFullYear();
   document.querySelectorAll('.slider-dot').forEach((dot, i) => dot.addEventListener('click', () => { slideIndex = i; showSlide(i); }));
   setInterval(nextSlide, 5000);
   document.querySelectorAll('.modal').forEach(modal => modal.addEventListener('click', event => { if (event.target === modal) modal.classList.remove('open'); }));
